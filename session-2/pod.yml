@@ -1,0 +1,37 @@
+apiVersion: v1                # Kubernetes API version used in this YAML decriptor
+kind: Pod                     # Type of Kubernetes object/resource
+metadata:                     # Pod metadata (name, labels, annotations and so on)
+  name: nginx-pod             # Pod Name
+  labels:
+    app: nginx                # label is key-value pair, has character limit of 63 characters
+    env: development 
+  annotations: 
+    app: This application pod is running nginx application                            
+spec:                         # Pod Specification/Contents (list of containers, volumes, image, ports and so on)
+  containers:
+  - image: nginx              # Container Image
+    name: nginx-container     # Container Name
+    ports:            
+    - containerPort: 80       # The Port the container is listening on
+      protocol: TCP
+---
+apiVersion: v1                # Kubernetes API version used in this YAML decriptor
+kind: Pod                     # Type of Kubernetes object/resource
+metadata:                     # Pod metadata (name, labels, annotations and so on)
+  name: apache-pod
+  labels:
+    app: apache
+    env: development  
+  annotations: 
+    app: This application pod is running apache application          
+spec:                          # Pod Specification/Contents (list of containers, volumes, image, ports and so on)
+  containers:
+  - image: httpd               # Container Image
+    name: apache-container     # Container Name
+    ports:            
+    - containerPort: 80        # The Port the container is listening on
+      protocol: TCP
+
+# required fields - apiVersion, kind, metadata.name, spec.containers
+# required fileds - a kms
+  
