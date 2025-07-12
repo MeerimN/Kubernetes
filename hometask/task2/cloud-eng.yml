@@ -1,0 +1,32 @@
+apiVersion: v1            # for creating a namespace
+kind: Namespace
+metadata:
+  name: cloud-engineering
+---
+apiVersion: v1            # for creating a service account
+kind: ServiceAccount
+metadata:
+  name: cloud-engineers
+  namespace: cloud-engineering
+---
+apiVersion: apps/v1       # for creating a deployment
+kind: Deployment
+metadata:
+  name: internal-app
+  namespace: cloud-engineering
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: internal-app
+  template:
+    metadata:
+      labels:
+        app: internal-app
+    spec:
+      serviceAccountName: cloud-engineers
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80

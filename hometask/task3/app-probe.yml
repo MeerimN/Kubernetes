@@ -1,0 +1,23 @@
+apiVersion: v1         # for creating a pod with nginx image
+kind: Pod
+metadata:
+  name: application-probe
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+    - containerPort: 80
+    - containerPort: 5000
+    readinessProbe:
+      httpGet:
+        path: /started
+        port: 5000
+      initialDelaySeconds: 5
+      periodSeconds: 10
+    livenessProbe:
+      httpGet:
+        path: /health
+        port: 5000
+      initialDelaySeconds: 5
+      periodSeconds: 10

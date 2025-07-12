@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: akumo-pod
+spec:
+  containers:
+  - name: akumo-container
+    image: busybox
+    args:
+      - /bin/sh
+      - -c
+      - sleep 5000
