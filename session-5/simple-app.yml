@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: private-app-pod
+spec:
+  containers:
+  - name: private-app-container
+    image: kriskhuslen/simple-app:v1
+  imagePullSecrets:
+  - name: docker-registry-secret
