@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: global-pod
+spec:
+  containers:
+    - name: global-contianer
+      image: nginx
+  serviceAccountName: pod-creator 
