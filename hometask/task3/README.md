@@ -15,7 +15,7 @@ Purpose
 `/health`    | Liveness      | Returns `200 OK` when the app is "alive and running"                |
 
 All endpoints listen on ports 80 and 5000.
-As nginx listens to port 80 and endpoints listen to 5000 it did not work. And it is impossible to integrate helath and started endpoints to nginx, without additional python or bash scripts. 
+As nginx listens to port 80 and endpoints listen to 5000 it did not work. And it is impossible to integrate helath and started endpoints to nginx, without additional python or bash scripts. Error: 500
 ---
 
 ### Readiness Probe (`/started`)
@@ -53,3 +53,4 @@ spec:
         port: 5000
       initialDelaySeconds: 5
       periodSeconds: 10
+
