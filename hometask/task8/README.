@@ -1,0 +1,13 @@
+Summary of Commands
+
+# Create namespace and deployment
+kubectl apply -f namespace.yaml
+kubectl apply -f deployment.yaml
+
+# Perform rolling update
+kubectl set image deployment/nginx-app nginx=nginx:latest -n app-a
+kubectl rollout status deployment/nginx-app -n app-a
+
+# Rollback to previous version
+kubectl rollout undo deployment/nginx-app -n app-a
+kubectl rollout history deployment/nginx-app -n app-a
